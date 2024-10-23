@@ -3,12 +3,14 @@ import {
   selectFilteredContacts,
   selectIsError,
   selectIsLoading,
-} from "../../redux/contactsSlice"
+} from "../../redux/contacts/slice"
 import s from "./ContactList.module.css"
 import Contact from "../Contact/Contact"
 
 const ContactList = () => {
-  const filteredContacts = useSelector(selectFilteredContacts)
+  const filteredContacts = useSelector(
+    selectFilteredContacts
+  )
 
   const isLoading = useSelector(selectIsLoading)
   const isError = useSelector(selectIsError)

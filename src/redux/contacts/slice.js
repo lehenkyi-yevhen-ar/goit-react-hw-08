@@ -7,8 +7,8 @@ import {
   addContacts,
   deleteContacts,
   fetchContacts,
-} from "./contactsOps"
-import { selectFilterStr } from "./filtersSlice"
+} from "../contacts/operations"
+import { selectFilterStr } from "../filters/slice"
 
 const initialState = {
   items: [],

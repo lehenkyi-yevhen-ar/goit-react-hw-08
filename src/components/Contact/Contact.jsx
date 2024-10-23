@@ -2,7 +2,7 @@ import { FaPhoneAlt } from "react-icons/fa"
 import { ImPacman } from "react-icons/im"
 import { useDispatch } from "react-redux"
 import s from "./Contact.module.css"
-import { deleteContacts } from "../../redux/contactsOps"
+import { deleteContacts } from "../../redux/contacts/operations"
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch()
