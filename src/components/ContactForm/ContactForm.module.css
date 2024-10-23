@@ -1,0 +1,17 @@
+.form {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 15px 30px;
+    margin-bottom: 15px;
+  }
+  
+  .fields {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
+  
