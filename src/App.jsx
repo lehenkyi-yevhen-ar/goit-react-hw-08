@@ -4,7 +4,10 @@
 import { Route, Routes } from "react-router-dom"
 import Layout from "./components/Layout"
 import HomePage from "./pages/HomePage"
-import NotFound from "./pages/NotFound"
+import NotFound from "./pages/NotFoundPage"
+import ContactsPage from "./pages/ContactsPage"
+import RegisterPage from "./pages/RegisterPage"
+import LoginPage from "./pages/LoginPage"
 
 const App = () => {
   // const dispatch = useDispatch()
@@ -16,12 +19,21 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
           <Route
-            path="/"
-            element={<HomePage />}
+            path="contacts"
+            element={<ContactsPage />}
+          />
+          <Route
+            path="register"
+            element={<RegisterPage />}
+          />
+          <Route
+            path="login"
+            element={<LoginPage />}
           />
         </Route>
-        <Route path="*" element={<NotFound/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

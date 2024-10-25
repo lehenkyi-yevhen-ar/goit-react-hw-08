@@ -1,10 +1,4 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0
-  ;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-p {
-  margin: 0;
-}
