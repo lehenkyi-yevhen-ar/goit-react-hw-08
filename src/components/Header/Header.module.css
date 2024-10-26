@@ -1,4 +1,4 @@
-.wrapper {
+/* .wrapper {
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -7,7 +7,7 @@
   background-color: rgb(102, 149, 149);
   font-size: 30px;
   width: 100%;
-}
+} */
 .link {
   color: white;
   font-weight: bold;

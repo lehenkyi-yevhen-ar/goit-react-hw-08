@@ -8,29 +8,72 @@ import NotFound from "./pages/NotFoundPage"
 import ContactsPage from "./pages/ContactsPage"
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
+import { Toaster } from "react-hot-toast"
+import { refreshUser } from "./redux/auth/operations"
+import { useEffect } from "react"
+import {
+  useDispatch,
+  useSelector,
+} from "react-redux"
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "./redux/auth/selectors"
+import { PrivateRoute } from "./components/PrivateRoute"
+import { RestrictedRoute } from "./components/RestrictedRoute"
 
 const App = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts())
-  // }, [dispatch])
-  return (
+  useEffect(() => {
+    dispatch(refreshUser())
+  }, [dispatch])
+
+  const isRefreshing = useSelector(
+    selectIsRefreshing
+  )
+  const isLoggedIn = useSelector(selectIsLoggedIn)
+
+  return isRefreshing ? null : (
     <div>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute
+                comp={<HomePage />}
+                redTo="/contacts"
+              />
+            }
+          />
           <Route
             path="contacts"
-            element={<ContactsPage />}
+            element={
+              <PrivateRoute
+                comp={<ContactsPage />}
+                redTo="/login"
+              />
+            }
           />
           <Route
             path="register"
-            element={<RegisterPage />}
+            element={
+              <RestrictedRoute
+                comp={<RegisterPage />}
+                redTo="/contacts"
+              />
+            }
           />
           <Route
             path="login"
-            element={<LoginPage />}
+            element={
+              <RestrictedRoute
+                comp={<LoginPage />}
+                redTo="/contacts"
+              />
+            }
           />
         </Route>
         <Route path="*" element={<NotFound />} />

@@ -1,22 +1,29 @@
-import { useSelector } from "react-redux"
+import {
+  useDispatch,
+  useSelector,
+} from "react-redux"
 import {
   selectFilteredContacts,
   selectIsError,
   selectIsLoading,
 } from "../../redux/contacts/slice"
-import s from "./ContactList.module.css"
 import Contact from "../Contact/Contact"
+import { useEffect } from "react"
+import { fetchContacts } from "../../redux/contacts/operations"
 
 const ContactList = () => {
   const filteredContacts = useSelector(
     selectFilteredContacts
   )
-
   const isLoading = useSelector(selectIsLoading)
   const isError = useSelector(selectIsError)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchContacts())
+  }, [dispatch])
 
   return (
-    <div>
+    <div className="ml-9">
       {isLoading && (
         <h2>Loading, please wait...</h2>
       )}
@@ -25,9 +32,9 @@ const ContactList = () => {
           Something went wrong, try again...
         </h2>
       )}
-      <ul className={s.list}>
+      <ul className="flex gap-2 flex-wrap mt-3">
         {filteredContacts.map((contact) => (
-          <li key={contact.id} className={s.card}>
+          <li key={contact.id}>
             <Contact contact={contact} />
           </li>
         ))}

@@ -9,6 +9,7 @@ import {
   fetchContacts,
 } from "../contacts/operations"
 import { selectFilterStr } from "../filters/slice"
+import { logout } from "../auth/operations"
 
 const initialState = {
   items: [],
@@ -41,6 +42,11 @@ const slice = createSlice({
           state.items.push(action.payload)
         }
       )
+      .addCase(
+        logout.fulfilled,
+        () => initialState
+      )
+
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
@@ -59,6 +65,7 @@ const slice = createSlice({
         ),
         (state) => {
           state.isLoading = false
+          state.isError = false
         }
       )
       .addMatcher(

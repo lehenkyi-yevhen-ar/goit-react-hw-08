@@ -1,7 +1,10 @@
 import clsx from "clsx"
 import s from "./Header.module.css"
 import { NavLink } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import {
+  useDispatch,
+  useSelector,
+} from "react-redux"
 import {
   selectIsLoggedIn,
   selectUser,
@@ -15,9 +18,13 @@ const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector(selectUser)
   const isLoggedIn = useSelector(selectIsLoggedIn)
- 
+
   return (
-    <div className={s.wrapper}>
+    <div
+      className="flex justify-between p-5 text-white font-bold bg-[#669595] text-3xl w-full
+    "
+    >
+      
       {isLoggedIn && (
         <div>Welcome, {user.name}</div>
       )}
@@ -47,7 +54,10 @@ const Header = () => {
         </>
       )}
       {isLoggedIn && (
-        <button onClick={() => dispatch(logout())} className="btn btn-secondary">
+        <button
+          onClick={() => dispatch(logout())}
+          className="btn"
+        >
           Logout
         </button>
       )}

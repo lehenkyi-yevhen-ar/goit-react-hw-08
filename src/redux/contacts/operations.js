@@ -1,14 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import axios from "axios"
-
-axios.defaults.baseURL =
-  "https://connections-api.goit.global/"
+import { goItApi } from "../../services/api"
 
 export const fetchContacts = createAsyncThunk(
   "fetchData",
   async (_, thunkApi) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await goItApi.get(
         "/contacts"
       )
       return data
@@ -24,7 +21,7 @@ export const deleteContacts = createAsyncThunk(
   "deleteData",
   async (id, thunkApi) => {
     try {
-      const { data } = await axios.delete(
+      const { data } = await goItApi.delete(
         `/contacts/${id}`
       )
       return data.id
@@ -40,7 +37,7 @@ export const addContacts = createAsyncThunk(
   "addData",
   async (body, thunkApi) => {
     try {
-      const { data } = await axios.post(
+      const { data } = await goItApi.post(
         "/contacts",
         body
       )

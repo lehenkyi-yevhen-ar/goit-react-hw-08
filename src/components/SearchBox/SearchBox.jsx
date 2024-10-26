@@ -12,6 +12,7 @@ const SearchBox = () => {
         onChange={(e) =>
           dispatch(changeFilter(e.target.value))
         }
+        className="p-2 border border-grey rounded-lg ml-9"
       />
     </div>
   )

@@ -16,7 +16,7 @@ export const validationSchema =
         "Field couldn't contain more than 50 symbols"
       )
       .required("Name is required"),
-    phone: Yup.string()
+    number: Yup.string()
       .matches(
         /^[0-9-]+$/,
         "Field has contain only digits and hyphens"
