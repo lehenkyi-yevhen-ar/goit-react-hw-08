@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { register } from "../../redux/auth/operations"
 import { Field, Form, Formik } from "formik"
 import { Link } from "react-router-dom"
+import PrivacyPolicy from "../PrivacyPolicy"
 
 const RegistrationForm = () => {
   const dispatch = useDispatch()
@@ -92,6 +93,7 @@ const RegistrationForm = () => {
                   Already have an account? Login
                   here!
                 </Link>
+                <PrivacyPolicy />
               </div>
             </Form>
           </Formik>
