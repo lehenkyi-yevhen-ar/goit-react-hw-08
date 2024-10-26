@@ -19,8 +19,8 @@ import {
   selectIsLoggedIn,
   selectIsRefreshing,
 } from "./redux/auth/selectors"
-import { PrivateRoute } from "./components/PrivateRoute"
-import { RestrictedRoute } from "./components/RestrictedRoute"
+import { PrivateRoute } from "./components/Routes/PrivateRoute"
+import { RestrictedRoute } from "./components/Routes/RestrictedRoute"
 
 const App = () => {
   const dispatch = useDispatch()
