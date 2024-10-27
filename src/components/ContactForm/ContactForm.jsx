@@ -7,6 +7,7 @@ import {
 } from "formik"
 import { validationSchema } from "../../helpers/validationSchema"
 import { addContacts } from "../../redux/contacts/operations"
+import toast from "react-hot-toast"
 
 const ContactForm = () => {
   const initialValues = { name: "", number: "" }
@@ -21,6 +22,7 @@ const ContactForm = () => {
 
     dispatch(addContacts(newContact))
     options.resetForm()
+    toast("Contact is added!")
   }
   return (
     <div>

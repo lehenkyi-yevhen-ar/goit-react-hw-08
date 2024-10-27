@@ -8,8 +8,9 @@ import {
   deleteContacts,
   fetchContacts,
 } from "../contacts/operations"
-import { selectFilterStr } from "../filters/slice"
 import { logout } from "../auth/operations"
+import { selectContacts } from "./selectors"
+import { selectFilterStr } from "../filters/selectors"
 
 const initialState = {
   items: [],
@@ -65,7 +66,6 @@ const slice = createSlice({
         ),
         (state) => {
           state.isLoading = false
-          state.isError = false
         }
       )
       .addMatcher(
@@ -84,25 +84,29 @@ const slice = createSlice({
 
 export const contactsReducer = slice.reducer
 
-export const selectContacts = (state) =>
-  state.contacts.items
-
-export const selectIsLoading = (state) =>
-  state.contacts.isLoading
-
-export const selectIsError = (state) =>
-  state.contacts.isError
-
 export const selectFilteredContacts =
   createSelector(
     [selectContacts, selectFilterStr],
     (contacts, filter) => {
+      const generalFilter = filter
+        .toLowerCase()
+        .trim()
+
       const filteredContacts = contacts.filter(
-        (contact) =>
-          contact.name
+        (contact) => {
+          const filteredName = contact.name
             .toLowerCase()
             .trim()
-            .includes(filter.toLowerCase().trim())
+          const filteredNumber =
+            contact.number.trim()
+
+          return (
+            filteredName.includes(
+              generalFilter
+            ) ||
+            filteredNumber.includes(generalFilter)
+          )
+        }
       )
       return filteredContacts
     }

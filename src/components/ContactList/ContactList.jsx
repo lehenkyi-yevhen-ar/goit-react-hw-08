@@ -2,14 +2,14 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux"
-import {
-  selectFilteredContacts,
-  selectIsError,
-  selectIsLoading,
-} from "../../redux/contacts/slice"
+import { selectFilteredContacts } from "../../redux/contacts/slice"
 import Contact from "../Contact/Contact"
 import { useEffect } from "react"
 import { fetchContacts } from "../../redux/contacts/operations"
+import {
+  selectIsError,
+  selectIsLoading,
+} from "../../redux/contacts/selectors"
 
 const ContactList = () => {
   const filteredContacts = useSelector(

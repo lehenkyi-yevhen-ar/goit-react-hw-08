@@ -1,10 +1,8 @@
 import { FaPhoneAlt } from "react-icons/fa"
 import { ImPacman } from "react-icons/im"
-import { useDispatch } from "react-redux"
-import { deleteContacts } from "../../redux/contacts/operations"
+import ContactModal from "./ContactModal"
 
 const Contact = ({ contact }) => {
-  const dispatch = useDispatch()
   return (
     <div className='flex border border-black p-4 rounded-md min-w-64'>
       <div className='flex flex-col mr-7 gap-3'>
@@ -17,14 +15,8 @@ const Contact = ({ contact }) => {
           <p>{contact.number}</p>
         </div>
       </div>
-      <button
-        onClick={() =>
-          dispatch(deleteContacts(contact.id))
-        }
-        className='flex h-fit p-2 text-white self-center ml-auto rounded outline-none bg-themeColor'
-      >
-        Delete
-      </button>
+      <div className="self-center ml-auto"><ContactModal contact={contact}/></div>
+
     </div>
   )
 }

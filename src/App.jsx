@@ -1,6 +1,3 @@
-// import { useDispatch } from "react-redux"
-// import { useEffect } from "react"
-// import { fetchContacts } from "./redux/contacts/operations"
 import { Route, Routes } from "react-router-dom"
 import Layout from "./components/Layout"
 import HomePage from "./pages/HomePage"
@@ -15,10 +12,7 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux"
-import {
-  selectIsLoggedIn,
-  selectIsRefreshing,
-} from "./redux/auth/selectors"
+import { selectIsRefreshing } from "./redux/auth/selectors"
 import { PrivateRoute } from "./components/Routes/PrivateRoute"
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute"
 
@@ -32,8 +26,6 @@ const App = () => {
   const isRefreshing = useSelector(
     selectIsRefreshing
   )
-  const isLoggedIn = useSelector(selectIsLoggedIn)
-
   return isRefreshing ? null : (
     <div>
       <Toaster />

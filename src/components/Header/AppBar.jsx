@@ -17,7 +17,7 @@ const AppBar = () => {
 
   return (
     <div
-      className="flex justify-between p-5 text-white font-bold bg-[#669595] text-3xl w-full
+      className="flex justify-between p-5 text-white font-bold bg-[#669595] text-3xl w-full flex-wrap
     "
     >
       <h1 className="italic">ContactBook</h1>
